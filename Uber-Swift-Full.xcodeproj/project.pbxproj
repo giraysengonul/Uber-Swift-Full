@@ -11,6 +11,7 @@
 		C422635928BA1BAF00AD9438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C422635828BA1BAF00AD9438 /* Assets.xcassets */; };
 		C422635C28BA1BAF00AD9438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C422635A28BA1BAF00AD9438 /* LaunchScreen.storyboard */; };
 		C422636A28BA1BE200AD9438 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422636928BA1BE200AD9438 /* LoginController.swift */; };
+		C422636C28BA3B4B00AD9438 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422636B28BA3B4B00AD9438 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		C422635B28BA1BAF00AD9438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C422635D28BA1BAF00AD9438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C422636928BA1BE200AD9438 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		C422636B28BA3B4B00AD9438 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +60,7 @@
 				C422636528BA1BC000AD9438 /* Controller */,
 				C422636428BA1BBB00AD9438 /* Service */,
 				C422636328BA1BB500AD9438 /* Utils */,
-				C422634F28BA1BAC00AD9438 /* AppDelegate.swift */,
-				C422635828BA1BAF00AD9438 /* Assets.xcassets */,
-				C422635A28BA1BAF00AD9438 /* LaunchScreen.storyboard */,
-				C422635D28BA1BAF00AD9438 /* Info.plist */,
+				C422636D28BA3CD900AD9438 /* Files */,
 			);
 			path = "Uber-Swift-Full";
 			sourceTree = "<group>";
@@ -69,6 +68,7 @@
 		C422636328BA1BB500AD9438 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C422636B28BA3B4B00AD9438 /* Extension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -107,6 +107,17 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C422636D28BA3CD900AD9438 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				C422634F28BA1BAC00AD9438 /* AppDelegate.swift */,
+				C422635828BA1BAF00AD9438 /* Assets.xcassets */,
+				C422635A28BA1BAF00AD9438 /* LaunchScreen.storyboard */,
+				C422635D28BA1BAF00AD9438 /* Info.plist */,
+			);
+			name = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C422636C28BA3B4B00AD9438 /* Extension.swift in Sources */,
 				C422636A28BA1BE200AD9438 /* LoginController.swift in Sources */,
 				C422635028BA1BAC00AD9438 /* AppDelegate.swift in Sources */,
 			);

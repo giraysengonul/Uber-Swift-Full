@@ -7,21 +7,112 @@
 
 import UIKit
 class LoginController: UIViewController {
-     // MARK: - Properties
-    
-     // MARK: - Lifecyle
+    // MARK: - Properties
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "UBER"
+        label.font = UIFont(name: "Avenir-Light", size: 36)
+        label.textColor = UIColor(white: 1, alpha: 0.8)
+        label.adjustsFontSizeToFitWidth = true
+        return label
+    }()
+    private let stackView = UIStackView()
+    private lazy var emailContainerView: UIView = {
+        let image = #imageLiteral(resourceName: "ic_mail_outline_white_2x")
+        let view = UIView().inputContainerView(withImage: image, withTextField: emailTextFiled)
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return view
+    }()
+    private lazy var passwordContainerView: UIView = {
+        let image = #imageLiteral(resourceName: "ic_lock_outline_white_2x")
+        let view = UIView().inputContainerView(withImage: image, withTextField: passwordTextFiled)
+        view.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return view
+    }()
+    private let emailTextFiled: UITextField = {
+        return UITextField().textField(withPlaceHolder: "Email", isSecuritetextEntry: false)
+    }()
+    private let passwordTextFiled: UITextField = {
+        return UITextField().textField(withPlaceHolder: "Password", isSecuritetextEntry: true)
+    }()
+    private let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Log In", for: .normal)
+        button.setTitleColor(UIColor(white: 1, alpha: 0.5), for: .normal)
+        button.backgroundColor = .mainBlue
+        button.layer.cornerRadius = 5
+        button.titleLabel?.adjustsFontSizeToFitWidth = true
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title2)
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        return button
+    }()
+    private let dontHaveActionButton: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account? ", attributes: [.font : UIFont.preferredFont(forTextStyle: .body),.foregroundColor : UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: " Sign Up", attributes: [.font: UIFont.preferredFont(forTextStyle: .body), .foregroundColor : UIColor.mainBlue]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        return button
+    }()
+    // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
     }
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
 }
- // MARK: - Helpers
+// MARK: - Helpers
 extension LoginController{
     private func style(){
-        view.backgroundColor = .red
+        view.backgroundColor = .backgroundColor
+        //titleLabel Style
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(titleLabel)
+        //emailContainerView Style
+        emailContainerView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(emailContainerView)
+        //passwordContainerView Style
+        passwordContainerView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(passwordContainerView)
+        //loginButton Style
+        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        stackView.addArrangedSubview(loginButton)
+        //stackView Style
+        stackView.axis = .vertical
+        stackView.spacing = 24
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        //dontHaveActionButton Style
+        dontHaveActionButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(dontHaveActionButton)
     }
     private func layout(){
+        //titleLabel Layout
+        NSLayoutConstraint.activate([
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0)
+        ])
+        //stackView Layout
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+        ])
+        //dontHaveActionButton Layout
+        NSLayoutConstraint.activate([
+            dontHaveActionButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+            dontHaveActionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
+}
+// MARK: - Actions
+extension LoginController{
+    @objc func handleShowSignUp(){
         
     }
 }

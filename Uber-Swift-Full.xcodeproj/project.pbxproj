@@ -8,22 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		C422635028BA1BAC00AD9438 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422634F28BA1BAC00AD9438 /* AppDelegate.swift */; };
-		C422635228BA1BAC00AD9438 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422635128BA1BAC00AD9438 /* SceneDelegate.swift */; };
-		C422635428BA1BAC00AD9438 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422635328BA1BAC00AD9438 /* ViewController.swift */; };
-		C422635728BA1BAC00AD9438 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C422635528BA1BAC00AD9438 /* Main.storyboard */; };
 		C422635928BA1BAF00AD9438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C422635828BA1BAF00AD9438 /* Assets.xcassets */; };
 		C422635C28BA1BAF00AD9438 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C422635A28BA1BAF00AD9438 /* LaunchScreen.storyboard */; };
+		C422636A28BA1BE200AD9438 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C422636928BA1BE200AD9438 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C422634C28BA1BAC00AD9438 /* Uber-Swift-Full.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Uber-Swift-Full.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C422634F28BA1BAC00AD9438 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C422635128BA1BAC00AD9438 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C422635328BA1BAC00AD9438 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C422635628BA1BAC00AD9438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C422635828BA1BAF00AD9438 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C422635B28BA1BAF00AD9438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C422635D28BA1BAF00AD9438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C422636928BA1BE200AD9438 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +52,61 @@
 		C422634E28BA1BAC00AD9438 /* Uber-Swift-Full */ = {
 			isa = PBXGroup;
 			children = (
+				C422636828BA1BD400AD9438 /* Model */,
+				C422636728BA1BCF00AD9438 /* View */,
+				C422636628BA1BC700AD9438 /* ViewModel */,
+				C422636528BA1BC000AD9438 /* Controller */,
+				C422636428BA1BBB00AD9438 /* Service */,
+				C422636328BA1BB500AD9438 /* Utils */,
 				C422634F28BA1BAC00AD9438 /* AppDelegate.swift */,
-				C422635128BA1BAC00AD9438 /* SceneDelegate.swift */,
-				C422635328BA1BAC00AD9438 /* ViewController.swift */,
-				C422635528BA1BAC00AD9438 /* Main.storyboard */,
 				C422635828BA1BAF00AD9438 /* Assets.xcassets */,
 				C422635A28BA1BAF00AD9438 /* LaunchScreen.storyboard */,
 				C422635D28BA1BAF00AD9438 /* Info.plist */,
 			);
 			path = "Uber-Swift-Full";
+			sourceTree = "<group>";
+		};
+		C422636328BA1BB500AD9438 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C422636428BA1BBB00AD9438 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C422636528BA1BC000AD9438 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C422636928BA1BE200AD9438 /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C422636628BA1BC700AD9438 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C422636728BA1BCF00AD9438 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C422636828BA1BD400AD9438 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +169,6 @@
 			files = (
 				C422635C28BA1BAF00AD9438 /* LaunchScreen.storyboard in Resources */,
 				C422635928BA1BAF00AD9438 /* Assets.xcassets in Resources */,
-				C422635728BA1BAC00AD9438 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C422635428BA1BAC00AD9438 /* ViewController.swift in Sources */,
+				C422636A28BA1BE200AD9438 /* LoginController.swift in Sources */,
 				C422635028BA1BAC00AD9438 /* AppDelegate.swift in Sources */,
-				C422635228BA1BAC00AD9438 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C422635528BA1BAC00AD9438 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C422635628BA1BAC00AD9438 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C422635A28BA1BAF00AD9438 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,7 +324,6 @@
 				INFOPLIST_FILE = "Uber-Swift-Full/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -320,7 +351,6 @@
 				INFOPLIST_FILE = "Uber-Swift-Full/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

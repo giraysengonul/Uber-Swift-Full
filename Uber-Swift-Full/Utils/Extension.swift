@@ -32,35 +32,60 @@ extension UITextField{
 }
 
 extension UIView{
-    func inputContainerView(withImage image: UIImage, withTextField textField: UITextField) -> UIView {
+    func inputContainerView(withImage image: UIImage, withTextField textField: UITextField? = nil, withsegmentedControl segmentedControl: UISegmentedControl? = nil) -> UIView {
         let view = UIView()
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = image
         imageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(imageView)
-        NSLayoutConstraint.activate([
-            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-            imageView.widthAnchor.constraint(equalToConstant: 24),
-            imageView.heightAnchor.constraint(equalToConstant: 24)
-        ])
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(textField)
-        NSLayoutConstraint.activate([
-            textField.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
-            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            textField.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
-            textField.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 8)
-        ])
         let seperatorView = UIView()
         seperatorView.backgroundColor = .lightGray
         seperatorView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(seperatorView)
+        if let textField = textField {
+            textField.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(textField)
+            NSLayoutConstraint.activate([
+                textField.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
+                textField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+                textField.centerYAnchor.constraint(equalTo: imageView.centerYAnchor),
+                textField.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8),
+                // seperatorView Layout if textField != nil
+                seperatorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            ])
+            //imageView Layout if textField != nil
+            NSLayoutConstraint.activate([
+                imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+                imageView.widthAnchor.constraint(equalToConstant: 24),
+                imageView.heightAnchor.constraint(equalToConstant: 24)
+            ])
+        }
+        
+        if let segmentedControl = segmentedControl {
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            //imageView Layout if segmented != nil
+            NSLayoutConstraint.activate([
+                imageView.topAnchor.constraint(equalTo: view.topAnchor,constant: -16),
+                imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+                imageView.widthAnchor.constraint(equalToConstant: 24),
+                imageView.heightAnchor.constraint(equalToConstant: 24)
+            ])
+            segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(segmentedControl)
+            NSLayoutConstraint.activate([
+                segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+                view.trailingAnchor.constraint(equalTo: segmentedControl.trailingAnchor, constant: 8),
+                segmentedControl.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: 8),
+                // seperatorView Layout if segmentedControl != nil
+                seperatorView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor,constant: 12),
+            ])
+        }
+        
         NSLayoutConstraint.activate([
             seperatorView.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            seperatorView.trailingAnchor.constraint(equalTo: textField.trailingAnchor),
-            seperatorView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            seperatorView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -8),
             seperatorView.heightAnchor.constraint(equalToConstant: 0.75)
         ])
         return view

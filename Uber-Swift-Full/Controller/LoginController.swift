@@ -60,14 +60,14 @@ class LoginController: UIViewController {
         style()
         layout()
     }
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
 }
 // MARK: - Helpers
 extension LoginController{
     private func style(){
+        //viewController Style
         view.backgroundColor = .backgroundColor
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.isHidden = true
         //titleLabel Style
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(titleLabel)
@@ -113,6 +113,7 @@ extension LoginController{
 // MARK: - Actions
 extension LoginController{
     @objc func handleShowSignUp(){
-        
+        let controller = SignUpController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

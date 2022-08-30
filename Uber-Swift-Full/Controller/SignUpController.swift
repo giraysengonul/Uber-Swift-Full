@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 class SignUpController: UIViewController {
     // MARK: - Properties
     private let titleLabel: UILabel = {
@@ -59,6 +61,7 @@ class SignUpController: UIViewController {
     private let signUpButton: AuthButton = {
         let button = AuthButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
+        button.addTarget(self, action: #selector(hadleSignUp), for: .touchUpInside)
         return button
     }()
     private let stackView = UIStackView()
@@ -131,7 +134,27 @@ extension SignUpController{
 }
 // MARK: - Actions
 extension SignUpController{
-    @objc func handleShowLogin(){
+    @objc func handleShowLogin(_ sender: UIButton){
         navigationController?.popViewController(animated: true)
+    }
+    @objc func hadleSignUp(_ sender: UIButton){
+        guard let email = emailTextFiled.text else { return }
+        guard let password = passwordTextFiled.text else { return }
+        guard let fullname = fullnameTextFiled.text else { return }
+        let accountTypeIndex = accountTypeSegmentedControl.selectedSegmentIndex
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error{
+                print("Failed to register user with error \(error.localizedDescription)")
+                return
+            }
+            guard let uid = result?.user.uid else{ return }
+            let values = ["email": email, "fullname": fullname, "accountType": accountTypeIndex] as [String : Any]
+            Database.database().reference().child("users").child(uid).updateChildValues(values) { error, referance in
+                if error != nil{
+                    print("\(error?.localizedDescription)")
+                }
+                print("Successfully registered user and saved data..")
+            }
+        }
     }
 }

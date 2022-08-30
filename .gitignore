@@ -45,7 +45,6 @@ DerivedData/
 !default.perspectivev3
 
 
-
 ## Obj-C/Swift specific
 
 *.hmap
@@ -68,7 +67,7 @@ timeline.xctimeline
 
 playground.xcworkspace
 
-
+Uber-Swift-Full/GoogleService-Info.plist
 
 # Swift Package Manager
 

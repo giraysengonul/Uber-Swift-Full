@@ -106,7 +106,7 @@ extension LoginController{
 }
 // MARK: - Actions
 extension LoginController{
-    @objc func handleShowSignUp(){
+    @objc func handleShowSignUp(_ sender: UIButton){
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
     }

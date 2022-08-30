@@ -151,7 +151,7 @@ extension SignUpController{
             let values = ["email": email, "fullname": fullname, "accountType": accountTypeIndex] as [String : Any]
             Database.database().reference().child("users").child(uid).updateChildValues(values) { error, referance in
                 if error != nil{
-                    print("\(error?.localizedDescription)")
+                    print("\(String(describing: error?.localizedDescription))")
                 }
                 print("Successfully registered user and saved data..")
             }

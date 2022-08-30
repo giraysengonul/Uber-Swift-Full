@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 class LoginController: UIViewController {
     // MARK: - Properties
     private let titleLabel: UILabel = {
@@ -38,6 +39,7 @@ class LoginController: UIViewController {
     private let loginButton: AuthButton = {
         let button = AuthButton(type: .system)
         button.setTitle("Log In", for: .normal)
+        button.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
         return button
     }()
     private let dontHaveActionButton: UIButton = {
@@ -109,5 +111,16 @@ extension LoginController{
     @objc func handleShowSignUp(_ sender: UIButton){
         let controller = SignUpController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    @objc func handleLogIn(_ sender: UIButton){
+        guard let email = emailTextFiled.text else { return }
+        guard let password = passwordTextFiled.text else{ return }
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error{
+                print(String(error.localizedDescription))
+                return
+            }
+            print("Successfully logged user in..")
+        }
     }
 }

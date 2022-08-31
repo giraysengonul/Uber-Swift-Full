@@ -153,7 +153,10 @@ extension SignUpController{
                 if error != nil{
                     print("\(String(describing: error?.localizedDescription))")
                 }
-                print("Successfully registered user and saved data..")
+                guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
+                controller.style()
+                controller.layout()
+                self.dismiss(animated: true)
             }
         }
     }

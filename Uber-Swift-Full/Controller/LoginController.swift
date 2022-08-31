@@ -120,7 +120,10 @@ extension LoginController{
                 print(String(error.localizedDescription))
                 return
             }
-            print("Successfully logged user in..")
+            guard let controller = UIApplication.shared.keyWindow?.rootViewController as? HomeController else { return }
+            controller.style()
+            controller.layout()
+            self.dismiss(animated: true)
         }
     }
 }

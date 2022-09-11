@@ -31,6 +31,7 @@ extension HomeController{
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
         //inputActivationView Style
+        inputActivationView.delegate = self
         inputActivationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(inputActivationView)
     }
@@ -93,4 +94,12 @@ extension HomeController: CLLocationManagerDelegate{
             locationManager.requestAlwaysAuthorization()
         }
     }
+}
+// MARK: - LocationInputActivationViewDelegate
+extension HomeController: LocationInputActivationViewDelegate{
+    func presentLocationInputView() {
+        print("selam")
+    }
+    
+    
 }

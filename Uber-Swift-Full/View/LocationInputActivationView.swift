@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol LocationInputActivationViewDelegate: AnyObject {
+    func presentLocationInputView()
+}
+
 class LocationInputActivationView: UIView {
     // MARK: - Properties
+    weak var delegate: LocationInputActivationViewDelegate?
+    
     private let indicatorView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
@@ -35,6 +41,8 @@ class LocationInputActivationView: UIView {
 // MARK: - Helpers
 extension LocationInputActivationView{
     private func style() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(presentLocationInputView))
+        addGestureRecognizer(tap)
         backgroundColor = .white
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.55
@@ -59,5 +67,11 @@ extension LocationInputActivationView{
             placeholderLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             placeholderLabel.leadingAnchor.constraint(equalTo: indicatorView.trailingAnchor, constant: 20)
         ])
+    }
+}
+// MARK: - Action
+extension LocationInputActivationView{
+    @objc func presentLocationInputView(_ sender: UITapGestureRecognizer){
+        delegate?.presentLocationInputView()
     }
 }

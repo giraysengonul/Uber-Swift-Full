@@ -13,11 +13,11 @@ class HomeController: UIViewController {
     // MARK: - Properties
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
+    private let inputActivationView = LocationInputActivationView()
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
-        
     }
 }
 // MARK: - Helper
@@ -30,9 +30,18 @@ extension HomeController{
         mapView.frame = view.frame
         mapView.showsUserLocation = true
         mapView.userTrackingMode = .follow
+        //inputActivationView Style
+        inputActivationView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(inputActivationView)
     }
     func layout(){
-        
+        //inputActivationView Layout
+        NSLayoutConstraint.activate([
+            inputActivationView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            inputActivationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 32),
+            inputActivationView.heightAnchor.constraint(equalToConstant: 50),
+            inputActivationView.widthAnchor.constraint(equalToConstant: view.frame.size.width - 64)
+        ])
     }
 }
 // MARK: - API
@@ -64,7 +73,7 @@ extension HomeController{
 // MARK: - LocationServices
 extension HomeController: CLLocationManagerDelegate{
     func enableLocationservices(_ manager: CLLocationManager){
-        locationManager.delegate = self
+        manager.delegate = self
         switch manager.authorizationStatus {
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()

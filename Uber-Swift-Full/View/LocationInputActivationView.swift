@@ -44,9 +44,7 @@ extension LocationInputActivationView{
         let tap = UITapGestureRecognizer(target: self, action: #selector(presentLocationInputView))
         addGestureRecognizer(tap)
         backgroundColor = .white
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.55
-        layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+        addShadow()
         //indicatorView Style
         indicatorView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(indicatorView)

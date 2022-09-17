@@ -14,6 +14,7 @@ class HomeController: UIViewController {
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
     private let inputActivationView = LocationInputActivationView()
+    private let locationInputView = LocationInputView()
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,24 @@ extension HomeController{
             inputActivationView.heightAnchor.constraint(equalToConstant: 50),
             inputActivationView.widthAnchor.constraint(equalToConstant: view.frame.size.width - 64)
         ])
+    }
+    private func configureLocationInputView(){
+        locationInputView.delegate = self
+        locationInputView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(locationInputView)
+        NSLayoutConstraint.activate([
+            locationInputView.topAnchor.constraint(equalTo: view.topAnchor),
+            locationInputView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            locationInputView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            locationInputView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+        locationInputView.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.locationInputView.alpha = 1
+        } completion: { _ in
+            print("present table view...")
+        }
+        
     }
 }
 // MARK: - API
@@ -98,8 +117,20 @@ extension HomeController: CLLocationManagerDelegate{
 // MARK: - LocationInputActivationViewDelegate
 extension HomeController: LocationInputActivationViewDelegate{
     func presentLocationInputView() {
-        print("selam")
+        inputActivationView.alpha = 0
+        configureLocationInputView()
     }
-    
-    
+}
+// MARK: - LocationInputViewDelegate
+extension HomeController: LocationInputViewDelegate{
+    func dismissLocationInputView() {
+        UIView.animate(withDuration: 0.3) {
+            self.locationInputView.alpha = 0
+        } completion: { _ in
+            UIView.animate(withDuration: 0.3) {
+                self.inputActivationView.alpha = 1
+            }
+        }
+        
+    }
 }

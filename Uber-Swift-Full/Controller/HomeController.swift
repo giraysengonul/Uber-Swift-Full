@@ -8,13 +8,15 @@
 import UIKit
 import FirebaseAuth
 import MapKit
-
+private let reuseIdentifier = "LocationInputCell"
 class HomeController: UIViewController {
     // MARK: - Properties
     private let mapView = MKMapView()
     private let locationManager = CLLocationManager()
     private let inputActivationView = LocationInputActivationView()
     private let locationInputView = LocationInputView()
+    private let tableView = UITableView()
+    private final let locationInputViewHeight: CGFloat = 200
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,7 @@ extension HomeController{
         inputActivationView.delegate = self
         inputActivationView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(inputActivationView)
+        configureTableView()
     }
     func layout(){
         //inputActivationView Layout
@@ -53,7 +56,7 @@ extension HomeController{
             locationInputView.topAnchor.constraint(equalTo: view.topAnchor),
             locationInputView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             locationInputView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            locationInputView.heightAnchor.constraint(equalToConstant: 200)
+            locationInputView.heightAnchor.constraint(equalToConstant: locationInputViewHeight)
         ])
         locationInputView.alpha = 0
         UIView.animate(withDuration: 0.5) {
@@ -61,7 +64,16 @@ extension HomeController{
         } completion: { _ in
             print("present table view...")
         }
-        
+    }
+    func configureTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(LocationInputCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = 60
+        let height = view.frame.height - locationInputViewHeight
+        tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: height)
+        //        tableView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(tableView)
     }
 }
 // MARK: - API
@@ -132,5 +144,16 @@ extension HomeController: LocationInputViewDelegate{
             }
         }
         
+    }
+}
+
+extension HomeController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,for: indexPath) as! LocationInputCell
+        
+        return cell
     }
 }

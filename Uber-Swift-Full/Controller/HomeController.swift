@@ -75,6 +75,7 @@ extension HomeController{
         tableView.dataSource = self
         tableView.register(LocationInputCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.rowHeight = 60
+        tableView.tableFooterView = UIView()
         let height = view.frame.height - locationInputViewHeight
         tableView.frame = CGRect(x: 0, y: view.frame.height, width: view.frame.width, height: height)
         //        tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -146,6 +147,7 @@ extension HomeController: LocationInputViewDelegate{
             self.locationInputView.alpha = 0
             self.tableView.frame.origin.y = self.view.frame.height
         } completion: { _ in
+            self.locationInputView.removeFromSuperview()
             UIView.animate(withDuration: 0.3) {
                 self.inputActivationView.alpha = 1
             }
@@ -153,10 +155,16 @@ extension HomeController: LocationInputViewDelegate{
         
     }
 }
-
+// MARK: - UITableViewDelegate/DataSource
 extension HomeController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Test"
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return section == 0 ? 2 : 5
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,for: indexPath) as! LocationInputCell

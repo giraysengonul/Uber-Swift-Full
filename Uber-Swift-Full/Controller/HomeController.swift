@@ -21,6 +21,7 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
+        fetchUserData()
     }
 }
 // MARK: - Helper
@@ -84,6 +85,11 @@ extension HomeController{
 }
 // MARK: - API
 extension HomeController{
+    
+    func fetchUserData() {
+        Service.fetchUserData()
+    }
+    
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser == nil{
             DispatchQueue.main.async {

@@ -20,6 +20,7 @@
 		C48804FE28BD2AA50037ABD9 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48804FD28BD2AA50037ABD9 /* SignUpController.swift */; };
 		C488050028BD4B300037ABD9 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48804FF28BD4B300037ABD9 /* AuthButton.swift */; };
 		C4BD8C7D28D57FC00042E8BC /* LocationInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BD8C7C28D57FC00042E8BC /* LocationInputView.swift */; };
+		C4E1E7F428E403FD00FF1C2B /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E1E7F328E403FD00FF1C2B /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C48804FD28BD2AA50037ABD9 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		C48804FF28BD4B300037ABD9 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 		C4BD8C7C28D57FC00042E8BC /* LocationInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInputView.swift; sourceTree = "<group>"; };
+		C4E1E7F328E403FD00FF1C2B /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		C422636428BA1BBB00AD9438 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C4E1E7F328E403FD00FF1C2B /* Service.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				C422636A28BA1BE200AD9438 /* LoginController.swift in Sources */,
 				C422635028BA1BAC00AD9438 /* AppDelegate.swift in Sources */,
 				C44622A528CDED9E0088A687 /* LocationInputActivationView.swift in Sources */,
+				C4E1E7F428E403FD00FF1C2B /* Service.swift in Sources */,
 				C4BD8C7D28D57FC00042E8BC /* LocationInputView.swift in Sources */,
 				C48804FE28BD2AA50037ABD9 /* SignUpController.swift in Sources */,
 			);

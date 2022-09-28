@@ -21,9 +21,8 @@ class LocationInputView: UIView {
         button.addTarget(self, action: #selector(handleBackTapped), for: .touchUpInside)
         return button
     }()
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hakkı Can ŞENGÖNÜL"
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 16)
         return label

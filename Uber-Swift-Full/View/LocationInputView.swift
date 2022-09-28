@@ -13,6 +13,11 @@ protocol LocationInputViewDelegate: AnyObject {
 
 class LocationInputView: UIView {
     // MARK: - Properties
+    
+    var user: User?{
+        didSet{titleLabel.text = user?.fullname }
+    }
+    
     weak var delegate: LocationInputViewDelegate?
     private lazy var backButton: UIButton = {
         let button = UIButton(type: .system)
@@ -21,7 +26,7 @@ class LocationInputView: UIView {
         button.addTarget(self, action: #selector(handleBackTapped), for: .touchUpInside)
         return button
     }()
-    let titleLabel: UILabel = {
+    private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
         label.font = UIFont.systemFont(ofSize: 16)

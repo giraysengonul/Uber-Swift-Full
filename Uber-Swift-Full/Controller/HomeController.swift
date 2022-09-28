@@ -17,8 +17,8 @@ class HomeController: UIViewController {
     private let locationInputView = LocationInputView()
     private let tableView = UITableView()
     private final let locationInputViewHeight: CGFloat = 200
-    private var fullname: String? {
-        didSet{ locationInputView.titleLabel.text = fullname }
+    private var user: User? {
+        didSet{ locationInputView.user = user }
     }
     // MARK: - Lifecyle
     override func viewDidLoad() {
@@ -90,8 +90,8 @@ extension HomeController{
 extension HomeController{
     
     func fetchUserData() {
-        Service.fetchUserData { fullname in
-            self.fullname = fullname
+        Service.fetchUserData { user in
+            self.user = user
         }
     }
     
